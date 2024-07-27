@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<root main_tree_to_execute="BehaviorTree">
+    <!-- ////////// -->
+    <BehaviorTree ID="BehaviorTree">
+        <Sequence>
+                <Sequence>
+                    <Action ID="CorrectDirection"/>
+                    <Parallel failure_threshold="0" success_threshold="3">
+                        <Action ID="MoveForward"/>
+                        <Action ID="AdjustAngle"/>
+                        <Condition ID="IsAttackRange"/>
+                    </Parallel>
+                    <Fallback>
+                        <Inverter>
+                            <Condition ID="IsAttackRange"/>
+                        </Inverter>
+                        <Action ID="Attack"/>
+                    </Fallback>
+                </Sequence>
+        </Sequence>
+    </BehaviorTree>
+    <!-- ////////// -->
+    <TreeNodesModel>
+        <Action ID="AdjustAngle"/>
+        <Action ID="Attack"/>
+        <Action ID="CorrectDirection"/>
+        <Condition ID="IsAttackRange"/>
+        <Action ID="MoveForward"/>
+    </TreeNodesModel>
+    <!-- ////////// -->
+</root>
